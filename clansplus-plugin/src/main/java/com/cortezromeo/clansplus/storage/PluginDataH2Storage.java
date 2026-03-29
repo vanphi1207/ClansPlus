@@ -181,7 +181,6 @@ public class PluginDataH2Storage implements PluginStorage {
             preparedStatement.setInt(16, 0);            // SPAWNPOINTZ
             preparedStatement.setString(17, "");        // ALLIES
             preparedStatement.setString(18, "");        // SKILLLEVEL
-            preparedStatement.setString(18, "");        // SKILLLEVEL
             preparedStatement.setString(19, "");        // SUBJECTPERMISSION
             preparedStatement.setString(20, "");        // ALLYINVITATION
             preparedStatement.setLong(21, 0L);        // DISCORDCHANNELID

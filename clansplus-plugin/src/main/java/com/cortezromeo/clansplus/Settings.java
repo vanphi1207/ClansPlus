@@ -122,7 +122,7 @@ public class Settings {
         CLAN_SETTINGS_MESSAGES_SETTINGS_ON_JOIN_WAR_EVENT_ENABLED = configuration.getBoolean("clan-settings.on-join.war-event.enabled");
         CLAN_SETTINGS_MESSAGES_SETTINGS_ON_JOIN_WAR_EVENT_DELAY = configuration.getLong("clan-settings.on-join.war-event.delay");
         CLAN_SETTINGS_MESSAGES_SETTINGS_ON_JOIN_CLAN_BROADCAST_ENABLED = configuration.getBoolean("clan-settings.on-join.clan-broadcast.enabled");
-        CLAN_SETTINGS_MESSAGES_SETTINGS_ON_JOIN_CLAN_BROADCAST_DELAY = configuration.getLong("clan-settings.on-join.clan-broadcast.enabled");
+        CLAN_SETTINGS_MESSAGES_SETTINGS_ON_JOIN_CLAN_BROADCAST_DELAY = configuration.getLong("clan-settings.on-join.clan-broadcast.delay");
         if (!CLAN_SETTING_SKILL_DEFAULT.isEmpty()) CLAN_SETTING_SKILL_DEFAULT.clear();
         for (String skillIDString : configuration.getConfigurationSection("clan-settings.creating-clan-settings.skill-level-default").getKeys(false)) {
             try {

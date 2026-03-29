@@ -302,12 +302,13 @@ public class WarEvent {
     }
 
     public void onJoin(PlayerJoinEvent event) {
-        if (!PLAYER_JOIN_NOTIFICATION_ENABLED) return;
         Player player = event.getPlayer();
+
+        if (isStarting()) createBossBar(player);
+
+        if (!PLAYER_JOIN_NOTIFICATION_ENABLED) return;
         sendEventStatusMessage(player, false);
 
-        // if the event already started, create a boss bar for the player
-        if (isStarting()) createBossBar(player);
     }
 
     public void onDamage(EntityDamageByEntityEvent event) {
@@ -469,7 +470,6 @@ public class WarEvent {
         List<Long> timeFrameMillisList = new ArrayList<>();
         DateFormat dateFormat = new SimpleDateFormat("HH:mm:ss");
         String currentTimeDateFormat = dateFormat.format(new Date());
-        Collections.sort(timeFrameMillisList);
         for (String timeFrame : EVENT_TIME_FRAME) {
             try {
                 timeFrameMillisList.add(dateFormat.parse(timeFrame).getTime());

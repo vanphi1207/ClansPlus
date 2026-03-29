@@ -539,6 +539,10 @@ public class ClanAdminCommand implements CommandExecutor, TabExecutor {
                     sender.sendMessage("This command is for player only!");
                     return false;
                 }
+                if (args.length < 3) {
+                    sender.sendMessage("/clanadmin openClanStorage <clan name> <storage number>");
+                    return false;
+                }
                 String clanName = args[1];
                 if (!PluginDataManager.getClanDatabase().containsKey(clanName)) {
                     sender.sendMessage("Clan " + clanName + " does not exist.");

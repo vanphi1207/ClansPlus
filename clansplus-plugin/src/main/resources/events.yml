@@ -45,7 +45,7 @@ events:
     event-boss-bar-settings:
       enabled: true
       title: '&#fc3903&m━&r &#fc7703CLAN WAR &r| &e%timeLeft% &#fc3903&m━'
-      color: YELLOW
+      color: RED
       style: SOLID
 
     # Sound settings
