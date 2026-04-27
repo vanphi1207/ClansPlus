@@ -159,8 +159,8 @@ messages:
   feature-disabled: '%prefix%&#d12f1d&l| &fTính năng này đã bị vô hiệu hóa bởi admin.'
   invalid-location: '%prefix%&#d12f1d&l| &fKhông thể làm điều đó ở đây! Hãy tìm một vị trí tốt hơn.'
   invalid-number: '%prefix%&#d12f1d&l| &fVui lòng nhập số hợp lệ!'
-  inventory-locked: '%prefix%&#d12f1d&l| &fBang hội của bạn chưa mở khóa kho đồ #%storageNumber%&f!'
-  inventory-number-exceed-limit: '%prefix%&#d12f1d&l| &fKhông thể mở kho đồ có số lớn hơn %maxStorageNumber%&f.'
+  storage-locked: '%prefix%&#d12f1d&l| &fBang hội của bạn chưa mở khóa kho đồ #%storageNumber%&f!'
+  storage-number-exceed-limit: '%prefix%&#d12f1d&l| &fKhông thể mở kho đồ có số lớn hơn %maxStorageNumber%&f.'
   using-chat-box:
     clan-chat: '&r%formatClanName% &eCHAT &f&l| &r%rank% &f%player%&f: %message%'
     create-clan: '%prefix%&#eaff00&l| &fVui lòng nhập tên bang hội vào ô chat.'
