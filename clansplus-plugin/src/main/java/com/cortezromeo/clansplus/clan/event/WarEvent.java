@@ -248,6 +248,12 @@ public class WarEvent {
             removeBossBar(player);
         }
 
+        for (BossBar bossBar : bossBarDatabase.values()) {
+            bossBar.removeAll();
+        }
+        bossBarDatabase.clear();
+
+
         if (ENDING_REWARD_ENABLED && reward) {
             FileConfiguration eventConfigFile = EventsFile.get();
             if (!getClanScoreCollected().isEmpty()) for (int i = 0; i <= topClanScoreCollected.size() - 1; i++) {
