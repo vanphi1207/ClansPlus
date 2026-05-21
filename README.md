@@ -40,6 +40,7 @@ You might need these plugins to utilize my plugin resources totally.
         - **%clanplus_clan_score%** - Get clan score
         - **%clanplus_clan_warpoint%** - Get clan warpoint
         - **%clanplus_clan_warning%** - Get clan warning
+        - **%clanplus_clan_currentmembers%** - Get current number of clan members
         - **%clanplus_clan_maxmembers%** - Get clan max members
         - **%clanplus_clan_createddate%** - Get clan created date as milliseconds
         - **%clanplus_clan_format_createddate%** - Get clan created date (mm/dd/yyyy)

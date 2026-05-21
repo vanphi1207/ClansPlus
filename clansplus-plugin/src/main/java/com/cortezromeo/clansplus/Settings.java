@@ -73,6 +73,7 @@ public class Settings {
     public static String SOFT_DEPEND_PLACEHOLDERAPI_CLAN_SCORE;
     public static String SOFT_DEPEND_PLACEHOLDERAPI_CLAN_WARPONT;
     public static String SOFT_DEPEND_PLACEHOLDERAPI_CLAN_WARNING;
+    public static String SOFT_DEPEND_PLACEHOLDERAPI_CLAN_CURRENTMEMBERS;
     public static String SOFT_DEPEND_PLACEHOLDERAPI_CLAN_MAXMEMBERS;
     public static String SOFT_DEPEND_PLACEHOLDERAPI_CLAN_CREATEDDATE;
     public static String SOFT_DEPEND_PLACEHOLDERAPI_CLAN_FORMAT_CREATEDDATE;
@@ -172,6 +173,7 @@ public class Settings {
         SOFT_DEPEND_PLACEHOLDERAPI_CLAN_SCORE = configuration.getString("soft-depends.placeholderapi.placeholders.clan_score");
         SOFT_DEPEND_PLACEHOLDERAPI_CLAN_WARPONT = configuration.getString("soft-depends.placeholderapi.placeholders.clan_warpoint");
         SOFT_DEPEND_PLACEHOLDERAPI_CLAN_WARNING = configuration.getString("soft-depends.placeholderapi.placeholders.clan_warning");
+        SOFT_DEPEND_PLACEHOLDERAPI_CLAN_CURRENTMEMBERS = configuration.getString("soft-depends.placeholderapi.placeholders.clan_currentmembers");
         SOFT_DEPEND_PLACEHOLDERAPI_CLAN_MAXMEMBERS = configuration.getString("soft-depends.placeholderapi.placeholders.clan_maxmembers");
         SOFT_DEPEND_PLACEHOLDERAPI_CLAN_CREATEDDATE = configuration.getString("soft-depends.placeholderapi.placeholders.clan_createddate");
         SOFT_DEPEND_PLACEHOLDERAPI_CLAN_FORMAT_CREATEDDATE = configuration.getString("soft-depends.placeholderapi.placeholders.clan_format_createddate");

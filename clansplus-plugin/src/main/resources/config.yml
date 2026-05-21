@@ -241,6 +241,7 @@ soft-depends:
       clan_score: '%value%'
       clan_warpoint: '%value%'
       clan_warning: '%value%'
+      clan_currentmembers: '%value%'
       clan_maxmembers: '%value%'
       clan_createddate: '%value%'
       clan_format_createddate: '%value%'

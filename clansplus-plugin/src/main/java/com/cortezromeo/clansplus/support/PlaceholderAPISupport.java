@@ -31,33 +31,53 @@ public class PlaceholderAPISupport extends PlaceholderExpansion {
     }
 
     @Override
+    public boolean persist() {
+        return true;
+    }
+
+    @Override
+    public boolean canRegister() {
+        return true;
+    }
+
+    @Override
     public String onPlaceholderRequest(Player player, String s) {
         if (s == null) return null;
 
         // top
         if (!PluginDataManager.getClanDatabase().isEmpty()) {
-            if (s.startsWith("top")) {
+            if (s.startsWith("top_score_name_") || s.startsWith("top_score_value_")) {
                 try {
-                    int value = Integer.parseInt(s.replace("top_score_name_", "").replace("top_score_value_", ""));
-                    value = value - 1;
+                    int index;
+                    if (s.startsWith("top_score_name_")) {
+                        index = Integer.parseInt(s.replace("top_score_name_", "")) - 1;
+                    } else {
+                        index = Integer.parseInt(s.replace("top_score_value_", "")) - 1;
+                    }
 
-                    if (value < 0 || PluginDataManager.getClanDatabase().size() <= value)
+                    if (index < 0 || PluginDataManager.getClanDatabase().size() <= index)
                         return Settings.SOFT_DEPEND_PLACEHOLDERAPI_NO_CLAN;
 
                     if (ClanManager.getClansScoreHashMap() == null || ClanManager.getClansScoreHashMap().isEmpty())
                         return Settings.SOFT_DEPEND_PLACEHOLDERAPI_NO_CLAN;
 
-                    IClanData clanData = PluginDataManager.getClanDatabase(HashMapUtil.sortFromGreatestToLowestI(ClanManager.getClansScoreHashMap()).get(value));
+                    IClanData clanData = PluginDataManager.getClanDatabase(
+                            HashMapUtil.sortFromGreatestToLowestI(ClanManager.getClansScoreHashMap()).get(index)
+                    );
 
                     if (s.startsWith("top_score_name_"))
-                        return ClansPlus.nms.addColor(StringUtil.setClanNamePlaceholder(Settings.SOFT_DEPEND_PLACEHOLDERAPI_TOP_SCORE_NAME_, clanData.getName()).replace("%top%", String.valueOf(value + 1)));
+                        return ClansPlus.nms.addColor(
+                                StringUtil.setClanNamePlaceholder(Settings.SOFT_DEPEND_PLACEHOLDERAPI_TOP_SCORE_NAME_, clanData.getName())
+                                        .replace("%top%", String.valueOf(index + 1))
+                        );
                     if (s.startsWith("top_score_value_"))
-                        return ClansPlus.nms.addColor(Settings.SOFT_DEPEND_PLACEHOLDERAPI_TOP_SCORE_VALUE_.replace("%value%", String.valueOf(clanData.getScore())));
+                        return ClansPlus.nms.addColor(
+                                Settings.SOFT_DEPEND_PLACEHOLDERAPI_TOP_SCORE_VALUE_.replace("%value%", String.valueOf(clanData.getScore()))
+                        );
 
                 } catch (Exception exception) {
-                    MessageUtil.throwErrorMessage("[PlaceholderAPI] Value typed for PlaceholderAPI is not available! (papi: " + s + ") (" + exception.getMessage() + ")");
+                    MessageUtil.throwErrorMessage("[PlaceholderAPI] Placeholder không hợp lệ! (papi: " + s + ") (" + exception.getMessage() + ")");
                 }
-
             }
         }
 
@@ -84,6 +104,9 @@ public class PlaceholderAPISupport extends PlaceholderExpansion {
         if (s.equalsIgnoreCase("clan_format_createddate"))
             return Settings.SOFT_DEPEND_PLACEHOLDERAPI_CLAN_FORMAT_CREATEDDATE.replace("%value%", StringUtil.dateTimeToDateFormat(clanData.getCreatedDate()));
         if (s.equalsIgnoreCase("clan_members")) return Settings.SOFT_DEPEND_PLACEHOLDERAPI_CLAN_MEMBERS.replace("%value%", String.valueOf(clanData.getMembers()));
+        if (s.equalsIgnoreCase("clan_currentmembers"))
+            return Settings.SOFT_DEPEND_PLACEHOLDERAPI_CLAN_CURRENTMEMBERS
+                    .replace("%value%", String.valueOf(clanData.getMembers().size()));
         if (s.equalsIgnoreCase("clan_allies"))
             return Settings.SOFT_DEPEND_PLACEHOLDERAPI_CLAN_ALLIES.replace("%value%", !clanData.getAllies().isEmpty() ? String.valueOf(clanData.getAllies()) : "");
         if (s.startsWith("clan_skilllevel_")) {
