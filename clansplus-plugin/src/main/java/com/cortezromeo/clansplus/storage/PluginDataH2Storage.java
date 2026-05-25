@@ -69,7 +69,11 @@ public class PluginDataH2Storage implements PluginStorage {
                     " DISCORDJOINLINK TEXT, " +
                     " STORAGE TEXT, " +
                     " MAXSTORAGE INT, " +
+                    " FUND DOUBLE DEFAULT 0, " +
                     " PRIMARY KEY (NAME))";
+
+            statement.executeUpdate(sql);
+            MessageUtil.debug("LOADING DATABASE (H2)", "Connected to clan table: " + clanTable);
 
             // 2.4 update
             // add STORAGE into the table
@@ -93,6 +97,17 @@ public class PluginDataH2Storage implements PluginStorage {
                 }
             }
 
+            // 2.11 update
+            // add FUND into the table (for existing databases that predate this column)
+            try {
+                String alterTableFund = "ALTER TABLE " + clanTable + " ADD FUND DOUBLE DEFAULT 0";
+                statement.execute(alterTableFund);
+            } catch (SQLException e) {
+                if (e.getErrorCode() == 42121) {
+                    MessageUtil.debug("h2 create table", "Skipping creating a new column FUND because column already existed.");
+                }
+            }
+
             // remove existing column INVENTORY from the previous versions
             try {
                 statement.execute("ALTER TABLE " + clanTable + " DROP COLUMN INVENTORY");
@@ -111,8 +126,6 @@ public class PluginDataH2Storage implements PluginStorage {
                     " SCORECOLLECTED LONG, " +
                     " LASTACTIVATED LONG, " +
                     " PRIMARY KEY (PLAYERNAME))";
-            statement.executeUpdate(sql);
-            MessageUtil.debug("LOADING DATABASE (H2)", "Connected to clan table: " + clanTable);
             statement.executeUpdate(sql2);
             MessageUtil.debug("LOADING DATABASE (H2)", "Connected to player table: " + playerTable);
         } catch (Exception e) {
@@ -307,6 +320,8 @@ public class PluginDataH2Storage implements PluginStorage {
                     clanData.setMaxStorage(Settings.CLAN_SETTINGS_MAX_STORAGE_DEFAULT);
                 else
                     clanData.setMaxStorage(resultSet.getInt("MAXSTORAGE"));
+
+                clanData.setFund(resultSet.getDouble("FUND"));
             }
         } catch (Exception exception) {
             exception.printStackTrace();
@@ -373,7 +388,8 @@ public class PluginDataH2Storage implements PluginStorage {
                 + " DISCORDCHANNELID = ?,"
                 + " DISCORDJOINLINK = ?,"
                 + " STORAGE = ?,"
-                + " MAXSTORAGE = ?"
+                + " MAXSTORAGE = ?,"
+                + " FUND = ?"
                 + " WHERE NAME = ?";
 
         try (PreparedStatement preparedStatement = getConnection().prepareStatement(sql)) {
@@ -434,7 +450,8 @@ public class PluginDataH2Storage implements PluginStorage {
 
             preparedStatement.setString(23, gson.toJson(clanInventoryBase64Converted));
             preparedStatement.setInt(24, clanData.getMaxStorage());
-            preparedStatement.setString(25, clanData.getName());
+            preparedStatement.setDouble(25, clanData.getFund());
+            preparedStatement.setString(26, clanData.getName());
             preparedStatement.executeUpdate();
         } catch (Exception exception) {
             exception.printStackTrace();

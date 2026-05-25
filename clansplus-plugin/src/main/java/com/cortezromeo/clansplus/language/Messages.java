@@ -151,6 +151,17 @@ public class Messages {
     public static String CLAN_BROADCAST_SET_ICON;
     public static String CLAN_BROADCAST_SET_SPAWN;
     public static String CLAN_BROADCAST_CHANGE_PERMISSION;
+    public static String FUND_DEPOSIT_SUCCESS;
+    public static String FUND_WITHDRAW_SUCCESS;
+    public static String FUND_NOT_ENOUGH;
+    public static String FUND_BALANCE;
+    public static String FUND_MIN_DEPOSIT;
+    public static String FUND_MIN_WITHDRAW;
+    public static String FUND_VAULT_NOT_FOUND;
+    public static String CLAN_BROADCAST_FUND_DEPOSIT;
+    public static String CLAN_BROADCAST_FUND_WITHDRAW;
+    public static String CLAN_BROADCAST_FUND_DAILY_FEE;
+    public static String CLAN_BROADCAST_FUND_DAILY_FEE_INSUFFICIENT;
 
     public static void setupValue(String locale) {
         locale = locale.toLowerCase();
@@ -312,6 +323,17 @@ public class Messages {
         CLAN_BROADCAST_SET_ICON = fileConfiguration.getString("messages.clan-broadcast.set-icon");
         CLAN_BROADCAST_SET_SPAWN = fileConfiguration.getString("messages.clan-broadcast.set-spawn");
         CLAN_BROADCAST_CHANGE_PERMISSION = fileConfiguration.getString("messages.clan-broadcast.change-permission");
+        FUND_DEPOSIT_SUCCESS = fileConfiguration.getString("messages.fund-deposit-success");
+        FUND_WITHDRAW_SUCCESS = fileConfiguration.getString("messages.fund-withdraw-success");
+        FUND_NOT_ENOUGH = fileConfiguration.getString("messages.fund-not-enough");
+        FUND_BALANCE = fileConfiguration.getString("messages.fund-balance");
+        FUND_MIN_DEPOSIT = fileConfiguration.getString("messages.fund-min-deposit");
+        FUND_MIN_WITHDRAW = fileConfiguration.getString("messages.fund-min-withdraw");
+        FUND_VAULT_NOT_FOUND = fileConfiguration.getString("messages.fund-vault-not-found");
+        CLAN_BROADCAST_FUND_DEPOSIT = fileConfiguration.getString("messages.clan-broadcast.fund-deposit");
+        CLAN_BROADCAST_FUND_WITHDRAW = fileConfiguration.getString("messages.clan-broadcast.fund-withdraw");
+        CLAN_BROADCAST_FUND_DAILY_FEE = fileConfiguration.getString("messages.clan-broadcast.fund-daily-fee");
+        CLAN_BROADCAST_FUND_DAILY_FEE_INSUFFICIENT = fileConfiguration.getString("messages.clan-broadcast.fund-daily-fee-insufficient");
 
         MessageUtil.debug("LOADING MESSAGES", "Loaded message file name: " + locale + ".");
     }

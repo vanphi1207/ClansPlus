@@ -46,6 +46,8 @@ subject:
     UPGRADE: 'Upgrade'
     MANAGEALLY: 'Manage allies'
     OPENSTORAGE: 'Open storage'
+    FUND_DEPOSIT: 'Deposit fund'
+    FUND_WITHDRAW: 'Withdraw fund'
   description:
     INVITE: 'Invite others to the clan'
     KICK: 'Kick a member out of the clan'
@@ -60,6 +62,8 @@ subject:
     UPGRADE: 'Upgrade the clan'
     MANAGEALLY: 'Send ally requests and manage allies'
     OPENSTORAGE: 'Open and manage clan storage'
+    FUND_DEPOSIT: 'Deposit money into the clan fund'
+    FUND_WITHDRAW: 'Withdraw money from the clan fund'
 online-status:
   offline: '&cOFFLINE'
   online: '&aONLINE'
@@ -194,6 +198,17 @@ messages:
     set-icon: '%prefix%&#35d11d&l| &r%rank%&e %player%&f set the clan icon to &e%value% (Type: %type%)&f.'
     set-spawn: '%prefix%&#35d11d&l| &r%rank%&e %player%&f set the clan spawn to (&c%x%&f, &a%y%&f, &b%z%&f [&cx&ay&bz&f]) (World: &e%world%&f).'
     change-permission: '%prefix%&#35d11d&l| &r%rank%&e %player%&f changed rank permission for &e%name%&f to: %newRank%'
+    fund-deposit: '%prefix%&#35d11d&l| &r%rank%&e %player%&f deposited &a%amount%&f into the clan fund. (Fund: &a%fund%&f)'
+    fund-withdraw: '%prefix%&#35d11d&l| &r%rank%&e %player%&f withdrew &c%amount%&f from the clan fund. (Fund: &a%fund%&f)'
+    fund-daily-fee: '%prefix%&#d12f1d&l| &fDaily maintenance fee of &c%fee%&f has been deducted. Remaining fund: &a%fund%&f.'
+    fund-daily-fee-insufficient: '%prefix%&#d12f1d&l| &fDaily maintenance fee could not be fully paid! Paid &c%paid%&f / &c%fee%&f. Fund is now empty.'
+  fund-balance: '%prefix%&#35d11d&l| &fClan fund: &a%fund%&f.'
+  fund-deposit-success: '%prefix%&#35d11d&l| &fSuccessfully deposited &a%amount%&f into the clan fund. (Fund: &a%fund%&f)'
+  fund-withdraw-success: '%prefix%&#35d11d&l| &fSuccessfully withdrew &a%amount%&f from the clan fund. (Fund: &a%fund%&f)'
+  fund-not-enough: '%prefix%&#d12f1d&l| &fThe clan fund does not have enough money! (Fund: &c%fund%&f, Required: &c%amount%&f)'
+  fund-min-deposit: '%prefix%&#d12f1d&l| &fMinimum deposit amount is &c%min%&f.'
+  fund-min-withdraw: '%prefix%&#d12f1d&l| &fMinimum withdrawal amount is &c%min%&f.'
+  fund-vault-not-found: '%prefix%&#d12f1d&l| &fVault economy is not available. Contact an administrator.'
   commands:
     clanplus:
       messages:

@@ -13,7 +13,9 @@ public enum Subject {
     CHAT("Chat", "Clan chat"),
     UPGRADE("Upgrade", "Upgrade clan"),
     MANAGEALLY("Manage ally", "Send ally invite and manage clan's allies"),
-    OPENSTORAGE("Open storage", "Open and manage clan storage");
+    OPENSTORAGE("Open storage", "Open and manage clan storage"),
+    FUND_DEPOSIT("Deposit fund", "Deposit money into clan fund"),
+    FUND_WITHDRAW("Withdraw fund", "Withdraw money from clan fund");
 
     private String name;
     private String description;

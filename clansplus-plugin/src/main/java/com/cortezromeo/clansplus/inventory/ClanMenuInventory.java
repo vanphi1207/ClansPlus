@@ -95,6 +95,14 @@ public class ClanMenuInventory extends ClanPlusInventoryBase {
             else
                 MessageUtil.sendMessage(getOwner(), Messages.FEATURE_DISABLED);
         }
+        if (itemCustomData.equals("fund")) {
+            if (!Settings.CLAN_FUND_ENABLED) {
+                MessageUtil.sendMessage(getOwner(), Messages.FEATURE_DISABLED);
+            } else {
+                IClanData clanData = PluginDataManager.getClanDatabaseByPlayerName(getOwner().getName());
+                MessageUtil.sendMessage(getOwner(), Messages.FUND_BALANCE.replace("%fund%", String.format("%.2f", clanData.getFund())));
+            }
+        }
 
         return true;
     }
@@ -243,6 +251,22 @@ public class ClanMenuInventory extends ClanPlusInventoryBase {
                     clanStorageLore, false), "storage");
             int clanStorageItemSlot = fileConfiguration.getInt("items.storage.slot");
             inventory.setItem(clanStorageItemSlot, clanStorageItem);
+
+            if (Settings.CLAN_FUND_ENABLED) {
+                List<String> fundItemLore = new ArrayList<>();
+                for (String lore : fileConfiguration.getStringList("items.fund.lore")) {
+                    lore = lore.replace("%fund%", String.format("%.2f", clanData.getFund()));
+                    fundItemLore.add(lore);
+                }
+                ItemStack fundItem = ClansPlus.nms.addCustomData(ItemUtil.getItem(
+                        ItemType.valueOf(fileConfiguration.getString("items.fund.type").toUpperCase()),
+                        fileConfiguration.getString("items.fund.value"),
+                        fileConfiguration.getInt("items.fund.customModelData"),
+                        fileConfiguration.getString("items.fund.name"),
+                        fundItemLore, false), "fund");
+                int fundItemSlot = fileConfiguration.getInt("items.fund.slot");
+                inventory.setItem(fundItemSlot, fundItem);
+            }
         });
     }
 }

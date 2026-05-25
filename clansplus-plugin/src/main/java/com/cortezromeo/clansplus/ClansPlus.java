@@ -23,6 +23,7 @@ import com.cortezromeo.clansplus.storage.PluginDataStorage;
 import com.cortezromeo.clansplus.support.Support;
 import com.cortezromeo.clansplus.support.version.CrossVersionSupport;
 import com.cortezromeo.clansplus.task.EventTask;
+import com.cortezromeo.clansplus.task.FundTask;
 import com.cortezromeo.clansplus.util.MessageUtil;
 import com.tchristofferson.configupdater.ConfigUpdater;
 import org.bukkit.Bukkit;
@@ -43,6 +44,7 @@ public class ClansPlus extends JavaPlugin {
     public static DatabaseType databaseType;
     public static Support support;
     private EventTask eventTask;
+    private FundTask fundTask;
 
     public static com.cortezromeo.clansplus.api.ClanPlus getAPI() {
         return api;
@@ -71,6 +73,7 @@ public class ClansPlus extends JavaPlugin {
         EventManager.getWarEvent();
         PluginDataManager.loadAllCustomHeadsFromJsonFiles();
         eventTask = new EventTask();
+        fundTask = new FundTask();
 
         log("&f--------------------------------");
         log("&2   ____ _                   ____  _           ");

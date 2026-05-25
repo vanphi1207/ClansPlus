@@ -2,7 +2,7 @@ name: ClansPlus
 author: Cortez_Romeo
 version: '${project.version}'
 main: com.cortezromeo.clansplus.ClansPlus
-api-version: 1.16
+api-version: 1.21
 softdepend:
   - Vault
   - PlayerPoints

@@ -33,6 +33,7 @@ public class ClanData implements IClanData {
     private String discordJoinLink;
     private HashMap<Integer, Inventory> storage;
     private int maxStorage;
+    private double fund;
 
     public ClanData(String name, String customName, String owner, String message, int score, long warPoint, int warning, int maxMembers, long createdDate, ItemType itemType, String iconValue, List<String> members, Location spawnPoint, List<String> allies, HashMap<Integer, Integer> skillLevel, HashMap<Subject, Rank> subjectPermission, List<String> allyInvitation, long discordChannelID, String discordJoinLink, HashMap<Integer, Inventory> storage, int maxStorage) {
         this.name = name;
@@ -266,5 +267,15 @@ public class ClanData implements IClanData {
     @Override
     public void setMaxStorage(int maxStorage) {
         this.maxStorage = maxStorage;
+    }
+
+    @Override
+    public double getFund() {
+        return fund;
+    }
+
+    @Override
+    public void setFund(double fund) {
+        this.fund = fund;
     }
 }

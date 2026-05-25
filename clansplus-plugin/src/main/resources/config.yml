@@ -102,6 +102,8 @@ clan-settings:
       UPGRADE: MANAGER
       MANAGEALLY: MANAGER
       OPENSTORAGE: MEMBER
+      FUND_DEPOSIT: MEMBER
+      FUND_WITHDRAW: MANAGER
     # Default available storage for newly created clans.
     # Player will need to upgrade their max storage number to use more inventories.
     # Set to 0 to not give any available storages to new clans.
@@ -269,3 +271,19 @@ soft-depends:
   # Put your discord web hook here to let plugin send plugin messages to your discord channel
   discordWebhook:
     webhookURL: ""
+
+# Clan fund (treasury) settings.
+clan-fund:
+  # Enable or disable the clan fund feature entirely.
+  enabled: true
+  # Minimum amount a player can deposit at once.
+  min-deposit: 1.0
+  # Minimum amount a manager/leader can withdraw at once.
+  min-withdraw: 1.0
+  # Daily maintenance fee deducted automatically from each clan's fund.
+  daily-fee:
+    enabled: false
+    # Amount deducted daily.
+    amount: 500.0
+    # Time at which the fee is deducted (HH:mm:ss format, server time).
+    time: '00:00:00'

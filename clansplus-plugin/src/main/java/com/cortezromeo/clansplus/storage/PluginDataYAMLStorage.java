@@ -204,6 +204,7 @@ public class PluginDataYAMLStorage implements PluginStorage {
             }
         }
         clanData.setStorageHashMap(clanStorage);
+        clanData.setFund(storage.getDouble("data.fund", 0.0));
 
         return clanData;
     }
@@ -241,6 +242,7 @@ public class PluginDataYAMLStorage implements PluginStorage {
         storage.set("data.discord.channel-id", clanData.getDiscordChannelID());
         storage.set("data.discord.join-link", clanData.getDiscordJoinLink());
         storage.set("data.max-storage", clanData.getMaxStorage());
+        storage.set("data.fund", clanData.getFund());
         if (storage.get("data.inventory") != null)
             storage.set("data.inventory", null);
 

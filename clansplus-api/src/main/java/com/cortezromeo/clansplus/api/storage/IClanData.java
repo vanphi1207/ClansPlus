@@ -95,4 +95,8 @@ public interface IClanData {
 
     void setMaxStorage(int maxStorage);
 
+    double getFund();
+
+    void setFund(double fund);
+
 }

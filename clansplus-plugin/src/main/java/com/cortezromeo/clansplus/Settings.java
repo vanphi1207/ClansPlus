@@ -94,6 +94,12 @@ public class Settings {
     public static String SOFT_DEPEND_PLACEHOLDERAPI_TOP_SCORE_NAME_;
     public static String SOFT_DEPEND_PLACEHOLDERAPI_TOP_SCORE_VALUE_;
     public static String SOFT_DEPEND_DISCORDWEBHOOK_URL;
+    public static boolean CLAN_FUND_ENABLED;
+    public static double CLAN_FUND_MIN_DEPOSIT;
+    public static double CLAN_FUND_MIN_WITHDRAW;
+    public static boolean CLAN_FUND_DAILY_FEE_ENABLED;
+    public static double CLAN_FUND_DAILY_FEE_AMOUNT;
+    public static String CLAN_FUND_DAILY_FEE_TIME;
 
     public static void setupValue() {
         MessageUtil.debug("SETTINGS", "Loading settings from config yaml...");
@@ -194,5 +200,12 @@ public class Settings {
         SOFT_DEPEND_PLACEHOLDERAPI_TOP_SCORE_NAME_ = configuration.getString("soft-depends.placeholderapi.placeholders.top_score_name_");
         SOFT_DEPEND_PLACEHOLDERAPI_TOP_SCORE_VALUE_ = configuration.getString("soft-depends.placeholderapi.placeholders.top_score_value_");
         SOFT_DEPEND_DISCORDWEBHOOK_URL = configuration.getString("soft-depends.discordWebhook.webhookURL");
+
+        CLAN_FUND_ENABLED = configuration.getBoolean("clan-fund.enabled");
+        CLAN_FUND_MIN_DEPOSIT = configuration.getDouble("clan-fund.min-deposit");
+        CLAN_FUND_MIN_WITHDRAW = configuration.getDouble("clan-fund.min-withdraw");
+        CLAN_FUND_DAILY_FEE_ENABLED = configuration.getBoolean("clan-fund.daily-fee.enabled");
+        CLAN_FUND_DAILY_FEE_AMOUNT = configuration.getDouble("clan-fund.daily-fee.amount");
+        CLAN_FUND_DAILY_FEE_TIME = configuration.getString("clan-fund.daily-fee.time");
     }
 }

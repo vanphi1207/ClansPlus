@@ -46,6 +46,8 @@ subject:
     UPGRADE: 'Nâng cấp'
     MANAGEALLY: 'Thiết lập đồng minh'
     OPENSTORAGE: 'Mở kho đồ'
+    FUND_DEPOSIT: 'Nạp quỹ bang hội'
+    FUND_WITHDRAW: 'Rút quỹ bang hội'
   description:
     INVITE: 'Mời người khác vào bang hội'
     KICK: 'Đuổi một thành viên ra khỏi bang hội'
@@ -60,6 +62,8 @@ subject:
     UPGRADE: 'Nâng cấp bang hội'
     MANAGEALLY: 'Gửi yêu cầu làm đồng minh và quản lý đồng minh'
     OPENSTORAGE: 'Mở và tùy chỉnh kho đồ bang hội'
+    FUND_DEPOSIT: 'Nạp tiền vào quỹ bang hội'
+    FUND_WITHDRAW: 'Rút tiền từ quỹ bang hội'
 online-status:
   offline: '&cOFFLINE'
   online: '&aONLINE'
@@ -194,6 +198,17 @@ messages:
     set-icon: '%prefix%&#35d11d&l| &r%rank%&e %player%&f đã chỉnh icon bang hội thành &e%value% (Type: %type%)&f.'
     set-spawn: '%prefix%&#35d11d&l| &r%rank%&e %player%&f đã chỉnh spawn bang hội thành (&c%x%&f, &a%y%&f, &b%z%&f [&cx&ay&bz&f]) (Thế giới: &e%world%&f).'
     change-permission: '%prefix%&#35d11d&l| &r%rank%&e %player%&f đã chuyển quyền chức vụ được sử dụng &e%name%&f thành: %newRank%'
+    fund-deposit: '%prefix%&#35d11d&l| &r%rank%&e %player%&f đã nạp &a%amount%&f vào quỹ bang hội. (Quỹ: &a%fund%&f)'
+    fund-withdraw: '%prefix%&#35d11d&l| &r%rank%&e %player%&f đã rút &c%amount%&f từ quỹ bang hội. (Quỹ: &a%fund%&f)'
+    fund-daily-fee: '%prefix%&#d12f1d&l| &fPhí duy trì hàng ngày &c%fee%&f đã được trừ. Quỹ còn lại: &a%fund%&f.'
+    fund-daily-fee-insufficient: '%prefix%&#d12f1d&l| &fQuỹ bang hội không đủ để trả phí duy trì! Đã trả &c%paid%&f / &c%fee%&f. Quỹ hiện đã về 0.'
+  fund-balance: '%prefix%&#35d11d&l| &fQuỹ bang hội: &a%fund%&f.'
+  fund-deposit-success: '%prefix%&#35d11d&l| &fNạp &a%amount%&f vào quỹ bang hội thành công. (Quỹ: &a%fund%&f)'
+  fund-withdraw-success: '%prefix%&#35d11d&l| &fRút &a%amount%&f từ quỹ bang hội thành công. (Quỹ: &a%fund%&f)'
+  fund-not-enough: '%prefix%&#d12f1d&l| &fQuỹ bang hội không đủ tiền! (Quỹ: &c%fund%&f, Cần: &c%amount%&f)'
+  fund-min-deposit: '%prefix%&#d12f1d&l| &fSố tiền nạp tối thiểu là &c%min%&f.'
+  fund-min-withdraw: '%prefix%&#d12f1d&l| &fSố tiền rút tối thiểu là &c%min%&f.'
+  fund-vault-not-found: '%prefix%&#d12f1d&l| &fKhông tìm thấy Vault economy. Vui lòng liên hệ quản trị viên.'
   commands:
     clanplus:
       messages:

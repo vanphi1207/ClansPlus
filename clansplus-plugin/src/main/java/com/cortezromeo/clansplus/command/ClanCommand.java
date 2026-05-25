@@ -163,6 +163,19 @@ public class ClanCommand implements CommandExecutor, TabExecutor {
                     return false;
                 }
             }
+            if (args[0].equalsIgnoreCase("fund")) {
+                if (!Settings.CLAN_FUND_ENABLED) {
+                    MessageUtil.sendMessage(player, Messages.FEATURE_DISABLED);
+                    return false;
+                }
+                if (!ClanManager.isPlayerInClan(player)) {
+                    MessageUtil.sendMessage(player, Messages.MUST_BE_IN_CLAN);
+                    return false;
+                }
+                IClanData clanData = PluginDataManager.getClanDatabaseByPlayerName(player.getName());
+                MessageUtil.sendMessage(player, Messages.FUND_BALANCE.replace("%fund%", String.format("%.2f", clanData.getFund())));
+                return false;
+            }
         }
         if (args.length == 2) {
             if (args[0].equalsIgnoreCase("info")) {
@@ -213,6 +226,30 @@ public class ClanCommand implements CommandExecutor, TabExecutor {
                 } catch (NumberFormatException exception) {
                     MessageUtil.sendMessage(player, Messages.INVALID_NUMBER);
                 }
+                return false;
+            }
+            if (args[0].equalsIgnoreCase("fund")) {
+                if (args[1].equalsIgnoreCase("deposit") || args[1].equalsIgnoreCase("withdraw")) {
+                    MessageUtil.sendMessage(player, Messages.INVALID_NUMBER);
+                    return false;
+                }
+            }
+        }
+
+        if (args.length == 3 && args[0].equalsIgnoreCase("fund")) {
+            IPlayerData playerData3 = PluginDataManager.getPlayerDatabase(player.getName());
+            try {
+                double amount = Double.parseDouble(args[2]);
+                if (args[1].equalsIgnoreCase("deposit")) {
+                    new FundDeposit(playerData3.getRank(), player, player.getName(), amount).execute();
+                    return false;
+                }
+                if (args[1].equalsIgnoreCase("withdraw")) {
+                    new FundWithdraw(playerData3.getRank(), player, player.getName(), amount).execute();
+                    return false;
+                }
+            } catch (NumberFormatException exception) {
+                MessageUtil.sendMessage(player, Messages.INVALID_NUMBER);
                 return false;
             }
         }
@@ -335,9 +372,18 @@ public class ClanCommand implements CommandExecutor, TabExecutor {
 
             // player is in a clan -> list all commands available
             if (playerClanData != null) {
-                for (Subject subject : getPlayerClanSubjectPer(playerClanData).keySet()) {
-                    if (ClanManager.isPlayerRankSatisfied(playerName, getPlayerClanSubjectPer(playerClanData).get(subject)))
+                HashMap<Subject, Rank> clanSubjectPer = getPlayerClanSubjectPer(playerClanData);
+                for (Subject subject : clanSubjectPer.keySet()) {
+                    // FUND_DEPOSIT and FUND_WITHDRAW are sub-actions of /clan fund, not top-level commands
+                    if (subject == Subject.FUND_DEPOSIT || subject == Subject.FUND_WITHDRAW) continue;
+                    if (ClanManager.isPlayerRankSatisfied(playerName, clanSubjectPer.get(subject)))
                         commands.add(subject.toString().toLowerCase());
+                }
+                // add "fund" as a top-level command if the feature is enabled and player has any fund permission
+                if (Settings.CLAN_FUND_ENABLED) {
+                    if (ClanManager.isPlayerRankSatisfied(playerName, clanSubjectPer.get(Subject.FUND_DEPOSIT))
+                            || ClanManager.isPlayerRankSatisfied(playerName, clanSubjectPer.get(Subject.FUND_WITHDRAW)))
+                        commands.add("fund");
                 }
                 if (playerData.getRank() == Rank.LEADER) {
                     commands.add("disband");
@@ -451,6 +497,13 @@ public class ClanCommand implements CommandExecutor, TabExecutor {
                         commands.add(memberName);
                     }
                 }
+
+                if (args[0].equalsIgnoreCase("fund") && Settings.CLAN_FUND_ENABLED) {
+                    if (ClanManager.isPlayerRankSatisfied(playerName, clanSubjectPer.get(Subject.FUND_DEPOSIT)))
+                        commands.add("deposit");
+                    if (ClanManager.isPlayerRankSatisfied(playerName, clanSubjectPer.get(Subject.FUND_WITHDRAW)))
+                        commands.add("withdraw");
+                }
             }
             StringUtil.copyPartialMatches(args[1], commands, completions);
         } else if (args.length == 3) {
@@ -463,6 +516,19 @@ public class ClanCommand implements CommandExecutor, TabExecutor {
                             if (material == Material.AIR) continue;
                             commands.add(material.toString().toUpperCase());
                         }
+                    }
+                }
+
+                if (args[0].equalsIgnoreCase("fund") && Settings.CLAN_FUND_ENABLED) {
+                    if (args[1].equalsIgnoreCase("deposit") && ClanManager.isPlayerRankSatisfied(playerName, clanSubjectPer.get(Subject.FUND_DEPOSIT))) {
+                        commands.add("100");
+                        commands.add("500");
+                        commands.add("1000");
+                    }
+                    if (args[1].equalsIgnoreCase("withdraw") && ClanManager.isPlayerRankSatisfied(playerName, clanSubjectPer.get(Subject.FUND_WITHDRAW))) {
+                        commands.add("100");
+                        commands.add("500");
+                        commands.add("1000");
                     }
                 }
             }
