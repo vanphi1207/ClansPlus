@@ -99,4 +99,8 @@ public interface IClanData {
 
     void setFund(double fund);
 
+    int getMissedFeeCount();
+
+    void setMissedFeeCount(int count);
+
 }

@@ -100,6 +100,7 @@ public class Settings {
     public static boolean CLAN_FUND_DAILY_FEE_ENABLED;
     public static double CLAN_FUND_DAILY_FEE_AMOUNT;
     public static String CLAN_FUND_DAILY_FEE_TIME;
+    public static int CLAN_FUND_DAILY_FEE_MAX_MISSED;
 
     public static void setupValue() {
         MessageUtil.debug("SETTINGS", "Loading settings from config yaml...");
@@ -207,5 +208,6 @@ public class Settings {
         CLAN_FUND_DAILY_FEE_ENABLED = configuration.getBoolean("clan-fund.daily-fee.enabled");
         CLAN_FUND_DAILY_FEE_AMOUNT = configuration.getDouble("clan-fund.daily-fee.amount");
         CLAN_FUND_DAILY_FEE_TIME = configuration.getString("clan-fund.daily-fee.time");
+        CLAN_FUND_DAILY_FEE_MAX_MISSED = configuration.getInt("clan-fund.daily-fee.max-missed", 3);
     }
 }

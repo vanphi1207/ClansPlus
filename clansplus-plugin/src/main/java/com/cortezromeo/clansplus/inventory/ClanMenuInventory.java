@@ -256,6 +256,18 @@ public class ClanMenuInventory extends ClanPlusInventoryBase {
                 List<String> fundItemLore = new ArrayList<>();
                 for (String lore : fileConfiguration.getStringList("items.fund.lore")) {
                     lore = lore.replace("%fund%", String.format("%.2f", clanData.getFund()));
+                    if (lore.contains("%dailyFeeInfo%")) {
+                        if (Settings.CLAN_FUND_DAILY_FEE_ENABLED) {
+                            fundItemLore.add(lore.replace("%dailyFeeInfo%", "&fNext daily fee: &#f0c030" + Settings.CLAN_FUND_DAILY_FEE_TIME + " &7(-" + String.format("%.2f", Settings.CLAN_FUND_DAILY_FEE_AMOUNT) + ")"));
+                        }
+                        continue;
+                    }
+                    if (lore.contains("%missedFeeInfo%")) {
+                        if (Settings.CLAN_FUND_DAILY_FEE_ENABLED && clanData.getMissedFeeCount() > 0) {
+                            fundItemLore.add(lore.replace("%missedFeeInfo%", "&cMissed fees: &f" + clanData.getMissedFeeCount() + "&c/" + Settings.CLAN_FUND_DAILY_FEE_MAX_MISSED));
+                        }
+                        continue;
+                    }
                     fundItemLore.add(lore);
                 }
                 ItemStack fundItem = ClansPlus.nms.addCustomData(ItemUtil.getItem(

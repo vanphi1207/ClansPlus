@@ -162,6 +162,8 @@ public class Messages {
     public static String CLAN_BROADCAST_FUND_WITHDRAW;
     public static String CLAN_BROADCAST_FUND_DAILY_FEE;
     public static String CLAN_BROADCAST_FUND_DAILY_FEE_INSUFFICIENT;
+    public static String CLAN_BROADCAST_FUND_DAILY_FEE_DISBAND;
+    public static String SERVER_BROADCAST_FUND_DAILY_FEE_DISBAND;
 
     public static void setupValue(String locale) {
         locale = locale.toLowerCase();
@@ -334,6 +336,8 @@ public class Messages {
         CLAN_BROADCAST_FUND_WITHDRAW = fileConfiguration.getString("messages.clan-broadcast.fund-withdraw");
         CLAN_BROADCAST_FUND_DAILY_FEE = fileConfiguration.getString("messages.clan-broadcast.fund-daily-fee");
         CLAN_BROADCAST_FUND_DAILY_FEE_INSUFFICIENT = fileConfiguration.getString("messages.clan-broadcast.fund-daily-fee-insufficient");
+        CLAN_BROADCAST_FUND_DAILY_FEE_DISBAND = fileConfiguration.getString("messages.clan-broadcast.fund-daily-fee-disband");
+        SERVER_BROADCAST_FUND_DAILY_FEE_DISBAND = fileConfiguration.getString("messages.server-broadcast.fund-daily-fee-disband");
 
         MessageUtil.debug("LOADING MESSAGES", "Loaded message file name: " + locale + ".");
     }

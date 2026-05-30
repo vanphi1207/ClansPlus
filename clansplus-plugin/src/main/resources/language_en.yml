@@ -74,6 +74,8 @@ time-format:
   hh-mm-ss: '%hours% hours %minutes% minutes %seconds% seconds'
   mm-ss: '%minutes% minutes %seconds% seconds'
   ss: '%seconds% seconds'
+server-broadcast:
+  fund-daily-fee-disband: '&#d12f1d&l[Server] &fClan &c%clan%&f has been automatically disbanded for failing to pay the daily maintenance fee &c%missed%&f times.'
 messages:
   prefix: '&#3498eb&lCLAN&r '
   clan-message:
@@ -201,7 +203,8 @@ messages:
     fund-deposit: '%prefix%&#35d11d&l| &r%rank%&e %player%&f deposited &a%amount%&f into the clan fund. (Fund: &a%fund%&f)'
     fund-withdraw: '%prefix%&#35d11d&l| &r%rank%&e %player%&f withdrew &c%amount%&f from the clan fund. (Fund: &a%fund%&f)'
     fund-daily-fee: '%prefix%&#d12f1d&l| &fDaily maintenance fee of &c%fee%&f has been deducted. Remaining fund: &a%fund%&f.'
-    fund-daily-fee-insufficient: '%prefix%&#d12f1d&l| &fDaily maintenance fee could not be fully paid! Paid &c%paid%&f / &c%fee%&f. Fund is now empty.'
+    fund-daily-fee-insufficient: '%prefix%&#d12f1d&l| &fInsufficient funds for daily fee! Required &c%fee%&f but only &c%fund%&f available. &7[Missed: &c%missed%&7/&c%maxMissed%&7]'
+    fund-daily-fee-disband: '%prefix%&#d12f1d&l| &fYour clan &c%clan%&f has been automatically disbanded after missing the daily fee &c%missed%&f times.'
   fund-balance: '%prefix%&#35d11d&l| &fClan fund: &a%fund%&f.'
   fund-deposit-success: '%prefix%&#35d11d&l| &fSuccessfully deposited &a%amount%&f into the clan fund. (Fund: &a%fund%&f)'
   fund-withdraw-success: '%prefix%&#35d11d&l| &fSuccessfully withdrew &a%amount%&f from the clan fund. (Fund: &a%fund%&f)'

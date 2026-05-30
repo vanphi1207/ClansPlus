@@ -74,6 +74,8 @@ time-format:
   hh-mm-ss: '%hours% giờ %minutes% phút %seconds% giây'
   mm-ss: '%minutes% phút %seconds% giây'
   ss: '%seconds% giây'
+server-broadcast:
+  fund-daily-fee-disband: '&#d12f1d&l[Server] &fBang hội &c%clan%&f đã bị tự động giải tán vì không đóng phí duy trì hàng ngày &c%missed%&f lần.'
 messages:
   prefix: '&#3498eb&lBANG HỘI&r '
   clan-message:
@@ -201,7 +203,8 @@ messages:
     fund-deposit: '%prefix%&#35d11d&l| &r%rank%&e %player%&f đã nạp &a%amount%&f vào quỹ bang hội. (Quỹ: &a%fund%&f)'
     fund-withdraw: '%prefix%&#35d11d&l| &r%rank%&e %player%&f đã rút &c%amount%&f từ quỹ bang hội. (Quỹ: &a%fund%&f)'
     fund-daily-fee: '%prefix%&#d12f1d&l| &fPhí duy trì hàng ngày &c%fee%&f đã được trừ. Quỹ còn lại: &a%fund%&f.'
-    fund-daily-fee-insufficient: '%prefix%&#d12f1d&l| &fQuỹ bang hội không đủ để trả phí duy trì! Đã trả &c%paid%&f / &c%fee%&f. Quỹ hiện đã về 0.'
+    fund-daily-fee-insufficient: '%prefix%&#d12f1d&l| &fQuỹ không đủ để trả phí duy trì! Cần &c%fee%&f nhưng quỹ chỉ còn &c%fund%&f. &7[Nợ phí: &c%missed%&7/&c%maxMissed%&7]'
+    fund-daily-fee-disband: '%prefix%&#d12f1d&l| &fBang hội &c%clan%&f của bạn đã bị tự động giải tán vì không đóng phí hàng ngày &c%missed%&f lần.'
   fund-balance: '%prefix%&#35d11d&l| &fQuỹ bang hội: &a%fund%&f.'
   fund-deposit-success: '%prefix%&#35d11d&l| &fNạp &a%amount%&f vào quỹ bang hội thành công. (Quỹ: &a%fund%&f)'
   fund-withdraw-success: '%prefix%&#35d11d&l| &fRút &a%amount%&f từ quỹ bang hội thành công. (Quỹ: &a%fund%&f)'

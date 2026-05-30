@@ -287,3 +287,5 @@ clan-fund:
     amount: 500.0
     # Time at which the fee is deducted (HH:mm:ss format, server time).
     time: '00:00:00'
+    # Number of consecutive missed payments before the clan is automatically disbanded.
+    max-missed: 3

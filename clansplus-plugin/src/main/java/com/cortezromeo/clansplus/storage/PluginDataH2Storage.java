@@ -108,6 +108,16 @@ public class PluginDataH2Storage implements PluginStorage {
                 }
             }
 
+            // add MISSEDFEECOUNT column for missed daily fee tracking
+            try {
+                String alterTableMissedFee = "ALTER TABLE " + clanTable + " ADD MISSEDFEECOUNT INT DEFAULT 0";
+                statement.execute(alterTableMissedFee);
+            } catch (SQLException e) {
+                if (e.getErrorCode() == 42121) {
+                    MessageUtil.debug("h2 create table", "Skipping creating a new column MISSEDFEECOUNT because column already existed.");
+                }
+            }
+
             // remove existing column INVENTORY from the previous versions
             try {
                 statement.execute("ALTER TABLE " + clanTable + " DROP COLUMN INVENTORY");
@@ -322,6 +332,10 @@ public class PluginDataH2Storage implements PluginStorage {
                     clanData.setMaxStorage(resultSet.getInt("MAXSTORAGE"));
 
                 clanData.setFund(resultSet.getDouble("FUND"));
+                try {
+                    clanData.setMissedFeeCount(resultSet.getInt("MISSEDFEECOUNT"));
+                } catch (SQLException ignored) {
+                }
             }
         } catch (Exception exception) {
             exception.printStackTrace();
@@ -389,7 +403,8 @@ public class PluginDataH2Storage implements PluginStorage {
                 + " DISCORDJOINLINK = ?,"
                 + " STORAGE = ?,"
                 + " MAXSTORAGE = ?,"
-                + " FUND = ?"
+                + " FUND = ?,"
+                + " MISSEDFEECOUNT = ?"
                 + " WHERE NAME = ?";
 
         try (PreparedStatement preparedStatement = getConnection().prepareStatement(sql)) {
@@ -451,7 +466,8 @@ public class PluginDataH2Storage implements PluginStorage {
             preparedStatement.setString(23, gson.toJson(clanInventoryBase64Converted));
             preparedStatement.setInt(24, clanData.getMaxStorage());
             preparedStatement.setDouble(25, clanData.getFund());
-            preparedStatement.setString(26, clanData.getName());
+            preparedStatement.setInt(26, clanData.getMissedFeeCount());
+            preparedStatement.setString(27, clanData.getName());
             preparedStatement.executeUpdate();
         } catch (Exception exception) {
             exception.printStackTrace();
